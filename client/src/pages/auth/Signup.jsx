@@ -12,11 +12,12 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    address: "",
-    password: "",
-  });
+  name: "",
+  email: "",
+  address: "",
+  password: "",
+  confirmPassword: "",
+});
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,6 +25,10 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (form.password !== form.confirmPassword) {
+  return toast.error("Passwords do not match.");
+}
 
     if (form.name.trim().length < 20 || form.name.trim().length > 60) {
       return toast.error("Name must be between 20 and 60 characters.");
@@ -45,11 +50,13 @@ export default function Signup() {
     }
 
     try {
-      await signup({
-        ...form,
-        name: form.name.trim(),
-        address: form.address.trim(),
-      });
+      const { confirmPassword, ...signupData } = form;
+
+await signup({
+  ...signupData,
+  name: form.name.trim(),
+  address: form.address.trim(),
+});
 
       toast.success("Account created! Please sign in.");
       navigate("/login");
@@ -270,6 +277,40 @@ export default function Signup() {
                 8–16 characters, at least one uppercase letter and one special character.
               </p>
             </div>
+
+
+{/* Confirm Password */}
+<div>
+  <label className="mb-2 block text-sm font-semibold text-slate-700">
+    Confirm Password
+  </label>
+
+  <div className="relative">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="confirmPassword"
+      value={form.confirmPassword}
+      onChange={handleChange}
+      placeholder="Re-enter your password"
+      required
+      autoComplete="new-password"
+      className={`${inputClass} pr-12`}
+    />
+
+    <button
+      type="button"
+      onClick={() => setShowPassword(!showPassword)}
+      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-blue-600"
+      aria-label={showPassword ? "Hide password" : "Show password"}
+    >
+      {showPassword ? (
+        <EyeOff size={20} />
+      ) : (
+        <Eye size={20} />
+      )}
+    </button>
+  </div>
+</div>
 
             {/* Submit */}
             <button
