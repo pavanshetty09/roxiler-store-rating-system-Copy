@@ -30,6 +30,8 @@ A full-stack web application that allows users to rate registered stores. The ap
 - Manage users and stores.
 - Create administrators, normal users, and store owners.
 - View user and store details.
+- Sortable user and store tables (ascending and descending order).
+- Sort records by available table columns.
 - Filter and manage listings.
 - View store ratings.
 
@@ -38,6 +40,8 @@ A full-stack web application that allows users to rate registered stores. The ap
 - Browse registered stores.
 - Search stores by name and address.
 - Submit ratings from 1 to 5.
+- Sortable store listings.
+- Sort stores in ascending and descending order.
 - Update previously submitted ratings.
 - Update password.
 
@@ -45,6 +49,8 @@ A full-stack web application that allows users to rate registered stores. The ap
 - Log in to the platform.
 - View store rating statistics.
 - View users who submitted ratings for their store.
+- View rating submissions in a sortable table.
+- Sort rating records in ascending and descending order.
 - Update password.
 
 ## Project Structure
