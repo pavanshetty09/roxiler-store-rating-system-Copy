@@ -180,6 +180,24 @@ Normal users can register through the signup page.
 A Store Owner account can be created through the administrator interface.
 
 For evaluation, configure and provide dedicated demo login credentials for all three roles.
+## Demo Login Credentials
+
+Use the following credentials to test the application.
+
+| Role | Email | Password |
+|---|---|---|
+| System Administrator | pavanshetty09112004@gmail.com | Paramesh@12345 |
+| Normal User | rahul@example.com | Rahul@909090 |
+| Store Owner | akash.owner@example.com | Akash@999999 |
+
+### Login Instructions
+
+1. Open the application.
+2. Enter the email and password for the desired role.
+3. Click Login.
+4. Explore the features available for that role.
+
+**Note:** Replace the placeholder credentials above with the actual demo account credentials before submitting the project
 
 ## Validation Rules
 
