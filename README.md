@@ -194,3 +194,31 @@ For evaluation, configure and provide dedicated demo login credentials for all t
 ## Author
 
 Developed as a Full Stack Intern Coding Challenge project.
+
+
+
+## Application Screenshots
+
+### Authentication
+| Login Page | Signup Page |
+|---|---|
+| ![Login](screenshots/login.png) | ![Signup](screenshots/signup.png) |
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Admin Management
+| Create User | Create Store |
+|---|---|
+| ![Create User](screenshots/admin-create-user.png) | ![Create Store](screenshots/admin-create-store.png) |
+
+| Manage Users | Manage Stores |
+|---|---|
+| ![Manage Users](screenshots/manage-users.png) | ![Manage Stores](screenshots/manage-stores.png) |
+
+### Normal User Dashboard
+![Store Listing and Ratings](screenshots/user-stores.png)
+
+### Store Owner Dashboard
+![Store Owner Dashboard](screenshots/store-owner-dashboard.png)
+
