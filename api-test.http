@@ -1,0 +1,280 @@
+
+### Test Signup API
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Paramesh Kumar Developer",
+  "email": "param@example.com",
+  "address": "Bangalore, Karnataka",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### Test Login API
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "param@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### Test Protected API
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Test Admin-Only API
+GET http://localhost:5000/api/admin/test
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test Admin Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "pavanshetty09112004@gmail.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### Test Admin-Only API
+GET http://localhost:5000/api/admin/test
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+
+### Get all users
+GET http://localhost:5000/api/admin/users
+
+###
+
+### Get user by ID
+GET http://localhost:5000/api/admin/users/1
+
+###
+
+### Create a user
+POST http://localhost:5000/api/admin/users
+Content-Type: application/json
+
+{
+  "name": "Rahul Kumar",
+  "email": "rahul@example.com",
+  "address": "Bangalore, Karnataka",
+  "password": "YOUR_PASSWORD_HERE",
+  "role": "USER"
+}
+
+
+
+### 1. Get All Users
+GET http://localhost:5000/api/admin/users
+
+###
+
+### 2. Get User By ID
+GET http://localhost:5000/api/admin/users/3
+
+###
+
+### 3. Search Users
+GET http://localhost:5000/api/admin/users?search=Rahul
+
+###
+
+### 4. Filter Users By Role
+GET http://localhost:5000/api/admin/users?role=USER
+
+###
+
+### 5. Pagination
+GET http://localhost:5000/api/admin/users?page=1&limit=2
+
+###
+
+### 6. Sort Users By Name
+GET http://localhost:5000/api/admin/users?sortBy=name&order=asc
+
+###
+
+### 7. Invalid User ID
+GET http://localhost:5000/api/admin/users/9999
+
+###
+
+### 8. Duplicate Email Test
+POST http://localhost:5000/api/admin/users
+Content-Type: application/json
+
+{
+  "name": "Rahul Kumar",
+  "email": "rahul@example.com",
+  "address": "Bangalore",
+  "password": "YOUR_PASSWORD_HERE",
+  "role": "USER"
+}
+
+
+### Create Store Owner
+POST http://localhost:5000/api/admin/users
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+{
+  "name": "Suresh Kumar Store Owner",
+  "email": "suresh.owner@example.com",
+  "address": "Bangalore, Karnataka",
+  "password": "YOUR_PASSWORD_HERE",
+  "role": "STORE_OWNER"
+}
+
+### Create Store
+POST http://localhost:5000/api/stores
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+{
+  "name": "Tech World Bangalore",
+  "email": "techworld@example.com",
+  "address": "MG Road, Bangalore, Karnataka",
+  "ownerId": 4
+}
+
+### Admin Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "pavanshetty09112004@gmail.com",
+  "password": "Paramesh@12345"
+}
+
+### Admin Dashboard Statistics
+GET http://localhost:5000/api/admin/dashboard/stats
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+
+### Submit Rating (USER)
+POST http://localhost:5000/api/ratings
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_TOKEN
+
+{
+  "storeId": 1,
+  "value": 5
+}
+
+### Get My Ratings (USER)
+GET http://localhost:5000/api/ratings/my
+Authorization: Bearer YOUR_USER_TOKEN
+
+### Login as USER
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "rahul@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### Submit Rating
+POST http://localhost:5000/api/ratings
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_TOKEN
+
+{
+  "storeId": 1,
+  "value": 5
+}
+
+### Get My Ratings
+GET http://localhost:5000/api/ratings/my
+Authorization: Bearer YOUR_USER_TOKEN
+
+### Update Existing Rating
+POST http://localhost:5000/api/ratings
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_TOKEN
+
+{
+  "storeId": 1,
+  "value": 4
+}
+
+### Login as Store Owner
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "suresh.owner@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### Store Owner Dashboard
+GET http://localhost:5000/api/ratings/owner/dashboard
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+
+### Login as USER
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "rahul@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+### USER - Access Admin Dashboard (Should Fail)
+GET http://localhost:5000/api/admin/dashboard/stats
+Authorization: Bearer YOUR_USER_TOKEN
+
+
+### USER - Access Owner Dashboard (Should Fail)
+GET http://localhost:5000/api/ratings/owner/dashboard
+Authorization: Bearer YOUR_USER_TOKEN
+
+### Login as STORE_OWNER
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "suresh.owner@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+
+### STORE_OWNER - Create Store (Should Fail)
+POST http://localhost:5000/api/stores
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+
+{
+  "name": "Test Store",
+  "email": "teststore@example.com",
+  "address": "Bangalore",
+  "ownerId": 4
+}
+
+
+### Update Password
+PUT http://localhost:5000/api/auth/update-password
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+{
+  "currentPassword": "Rahul@12345",
+  "newPassword": "YOUR_PASSWORD_HERE"
+}
+
+### Login as STORE_OWNER
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "akash.owner@example.com",
+  "password": "YOUR_PASSWORD_HERE"
+}
+
+
+### Get Current Logged-in User
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
